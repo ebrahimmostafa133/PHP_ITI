@@ -1,19 +1,15 @@
 <?php
 $filename = "customer.txt";
-
-// Handle Deletion
 if (isset($_GET['delete'])) {
     $index = (int)$_GET['delete'];
     $lines = file($filename);
     if (isset($lines[$index])) {
         unset($lines[$index]);
         file_put_contents($filename, implode("", $lines));
-        header("Location: users.php"); // Refresh to show changes
+        header("Location: users.php"); 
         exit;
     }
 }
-
-// Read records
 $users = [];
 if (file_exists($filename)) {
     $lines = file($filename);
